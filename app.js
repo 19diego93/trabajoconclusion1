@@ -38,7 +38,7 @@ let concesionaria = {
       }
    },
    autosParaLaVenta() {
-   
+   //todas las funciones que probe , para vender por ahora funciona correctamente.
       let paravender = this.autos.filter(function(x){
          return x.vendido!==true
       });return paravender
@@ -78,8 +78,8 @@ let concesionaria = {
          },
 
    autos0KM(){
-    concesionaria.autosParaLaVenta()
-     let ceros = enVenta.filter(i=>(i.km<100))
+    
+     let ceros = this.autosParaLaVenta().filter(i=>(i.km<100))
      return ceros
        
    },
@@ -134,7 +134,7 @@ loCompra.push(car)}
 
 
 
- 
+console.log(concesionaria.autos0KM())
 console.log(concesionaria.autosParaLaVenta())
 
 //console.log(enVenta)
@@ -145,7 +145,7 @@ console.log(concesionaria.autosParaLaVenta())
 
 //console.log(concesionaria.venderAuto("APL123"))
 
-//console.log(concesionaria.autos0KM())
+console.log(concesionaria.autos0KM())
 
 //console.log(concesionaria.listaDeVentas())
 
