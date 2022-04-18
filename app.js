@@ -3,7 +3,9 @@ let personas = require("./personas/personas")
 
 var venta = true 
 
+let enVenta=[]
 
+let refiltrado = []
 
 let ganancias=[]
 
@@ -37,19 +39,28 @@ let concesionaria = {
    },
    autosParaLaVenta() {
    
-      let enVenta=[]
-    for( let i = 0; i < autos.length; i++){
-         if(autos[i] === false){
-         enVenta.push(autos[i])
+      let paravender = this.autos.filter(function(x){
+         return x.vendido!==true
+      });return paravender
+
+    /*  
+    for( let i = 0; i < this.autos.length; i++){
+         if(this.autos[i] === false){
+         enVenta.push(this.autos[i])
          } 
-      }return enVenta
-      
+      }
+      return enVenta*/
       
           /*this.autos.filter(function(auto) {
-             if(auto.vendido == false){
+             if(auto.vendido === false){
                 enVenta.push(auto)
-             }
-         });return enVenta*/
+                return enVenta
+             }else{
+                enVenta.filter(function(auto){
+                   auto.vendido === false
+                  refiltrado.push(auto)})
+                }
+         });return refiltrado*/
         
       
       /*autos.filter(function(auto){ (auto.vendido === false)
