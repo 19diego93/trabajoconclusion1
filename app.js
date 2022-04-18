@@ -3,7 +3,7 @@ let personas = require("./personas/personas")
 
 var venta = true 
 
-let enVenta=[]
+
 
 let ganancias=[]
 
@@ -37,24 +37,29 @@ let concesionaria = {
    },
    autosParaLaVenta() {
    
-      for( let i = 0; i < autos.length; i++){
-         if (autos[i].vendido == false){
-        enVenta.push(autos[i])
+      let enVenta=[]
+    for( let i = 0; i < autos.length; i++){
+         if(autos[i] === false){
+         enVenta.push(autos[i])
          } 
       }return enVenta
       
-      /*
-         let listar = this.autos.filter(function(auto) {
-             auto.vendido == false
-         })
-         return listar;
-      */
       
-      /*let listar = this.autos.filter(function(vend){
-      vend.vendido==false})
-      return listar*/
-
+          /*this.autos.filter(function(auto) {
+             if(auto.vendido == false){
+                enVenta.push(auto)
+             }
+         });return enVenta*/
+        
+      
+      /*autos.filter(function(auto){ (auto.vendido === false)
+         enVenta.push(auto)
+         
+      });return enVenta*/
    },
+         
+
+   
    
    autosNuevos(){
       let nuevos = autos.filter(auto=>(auto.km <100))
@@ -62,7 +67,7 @@ let concesionaria = {
          },
 
    autos0KM(){
-    this.autosParaLaVenta()
+    concesionaria.autosParaLaVenta()
      let ceros = enVenta.filter(i=>(i.km<100))
      return ceros
        
@@ -83,39 +88,58 @@ let concesionaria = {
          return res
    },
 
- puedeComprar:function(auto,persona){
-    
-    if ((this.autos[auto].precio < personas[persona].capacidadDePagoTotal) && (this.autos[auto].precio <this.autos[auto].cuotas*personas[persona].capacidadDepagoEnCuotas)){
-       return true
-    }
-       
+   puedeComprar:function(auto,persona){
+      
+      let pagoEnCuotas = (persona.capaciadDePagoEnCuotas)*(auto.cuotas);
+      let pagar = (auto.precio);
+      let puedePagar = (persona.capacidadDePagoTotal);
+
+     if ((pagar < puedePagar)&&(pagar < pagoEnCuotas)){
+        return true
+     }else{ return false}       
+        },
+
+   autosQuePuedeComprar:function(x){
+      let loCompra=[]
+      this.autos.foreach(function(car){
+         if (concesionaria.puedeComprar(car,x) === true){
+loCompra.push(car)}
+      });
+       return loCompra
+         
+      
+
+
+   },
    
- }
-  
 }
+  
 
 
 
 
-console.log(puedeComprar(1,0))
+
+//console.log(puedeComprar(1,0))
 
 
 
  
-/*console.log(concesionaria.autos0KM())
+console.log(concesionaria.autosParaLaVenta())
 
-console.log(concesionaria.listaDeVentas())
+//console.log(enVenta)
 
 console.log(concesionaria.venderAuto("JJK116"))
 
-console.log(concesionaria.venderAuto("APL123"))
+console.log(concesionaria.autosParaLaVenta())
 
-console.log(concesionaria.autos0KM())
+//console.log(concesionaria.venderAuto("APL123"))
 
-console.log(concesionaria.listaDeVentas())
+//console.log(concesionaria.autos0KM())
 
-console.log(concesionaria.totalDeVentas())
-*/
+//console.log(concesionaria.listaDeVentas())
+
+//console.log(concesionaria.totalDeVentas())
+
 
 
 
