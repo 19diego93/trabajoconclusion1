@@ -125,13 +125,13 @@ loCompra.push(car)}
   
 
 
-console.log(concesionaria.puedeComprar(1,0))
+/*console.log(concesionaria.puedeComprar(1,0))
 console.log(concesionaria.puedeComprar(1,1))
-console.log(concesionaria.puedeComprar(0,2))
+console.log(concesionaria.puedeComprar(0,2))*/
 
 
-//console.log(concesionaria.autos0KM())
-//console.log(concesionaria.autosParaLaVenta())
+console.log(concesionaria.autos0KM())
+console.log(concesionaria.autosParaLaVenta())
 
 //console.log(enVenta)
 
