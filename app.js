@@ -9,6 +9,8 @@ let refiltrado = []
 
 let ganancias=[]
 
+
+
 let concesionaria = {  
    buscarAuto(serial){
      /* let car = this.autos.filter(coche=>(coche.patente == serial){
@@ -39,9 +41,8 @@ let concesionaria = {
    },
    autosParaLaVenta() {
    //todas las funciones que probe , para vender por ahora funciona correctamente.
-      let paravender = this.autos.filter(function(x){
-         return x.vendido!==true
-      });return paravender
+      let paravender = this.autos.filter(x=> (x.vendido!==true));
+      return paravender
 
     /*  
     for( let i = 0; i < this.autos.length; i++){
@@ -73,7 +74,7 @@ let concesionaria = {
    
    
    autosNuevos(){
-      let nuevos = autos.filter(auto=>(auto.km <100))
+      let nuevos = this.autos.filter(auto=>(auto.km <100))
       return nuevos
          },
 
@@ -92,23 +93,20 @@ let concesionaria = {
       }  return ganancias
    },
 
-  totalDeVentas(){   
+   totalDeVentas(){   
               let res= ganancias.reduce((acc, item)=>{
             return  acc = acc + item; 
           }, 0);  
          return res
    },
+//siendo auto un numero indice del array autos, y persona un numero indice del array personas.
+   puedeComprar:function(car,ser){
+      let pagoEnCuotas = (personas[ser].capacidadDePagoEnCuotas)*(this.autos[car].cuotas);
+      let pagar = (this.autos[car].precio);
+      let puedePagar = (personas[ser].capacidadDePagoTotal);
 
-   puedeComprar:function(auto,persona){
-      
-      let pagoEnCuotas = (persona.capaciadDePagoEnCuotas)*(auto.cuotas);
-      let pagar = (auto.precio);
-      let puedePagar = (persona.capacidadDePagoTotal);
-
-     if ((pagar < puedePagar)&&(pagar < pagoEnCuotas)){
-        return true
-     }else{ return false}       
-        },
+        return ((pagar < puedePagar)&&(pagar < pagoEnCuotas))     
+      },
 
    autosQuePuedeComprar:function(x){
       let loCompra=[]
@@ -127,25 +125,23 @@ loCompra.push(car)}
   
 
 
+console.log(concesionaria.puedeComprar(1,0))
+console.log(concesionaria.puedeComprar(1,1))
+console.log(concesionaria.puedeComprar(0,2))
 
 
-
-//console.log(puedeComprar(1,0))
-
-
-
-console.log(concesionaria.autos0KM())
-console.log(concesionaria.autosParaLaVenta())
+//console.log(concesionaria.autos0KM())
+//console.log(concesionaria.autosParaLaVenta())
 
 //console.log(enVenta)
 
-console.log(concesionaria.venderAuto("JJK116"))
+//console.log(concesionaria.venderAuto("JJK116"))
 
-console.log(concesionaria.autosParaLaVenta())
+//console.log(concesionaria.autosParaLaVenta())
 
 //console.log(concesionaria.venderAuto("APL123"))
 
-console.log(concesionaria.autos0KM())
+//console.log(concesionaria.autos0KM())
 
 //console.log(concesionaria.listaDeVentas())
 
