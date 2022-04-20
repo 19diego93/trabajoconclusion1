@@ -122,7 +122,86 @@ loCompra.push(car)}
    },
    
 }
+  /**const autos = require("./autos")
+
+const concesionaria = {
+    
+    autos: autos,
+
+    buscarAuto: function(serial){
+        for(let i=0; i<autos.length; i++){
+            if(autos[i].patente == serial){
+                return autos[i]
+            }
+        }
+    return null;
+    },
+    
+    venderAuto(serial){
+        let vender = this.buscarAuto(serial);
+            if(vender.vendido == false){
+                return vender.vendido = true;
+            }
+    },
+    autosParaLaVenta(){
+        const venta = autos.filter(function(x){
+           return x.vendido != true
+         })
+        return venta
+    },
+    autosNuevos(){
+        let ceros = this.autosParaLaVenta().filter(function(y){
+           return y.km < 100          
+            
+        })
+        return ceros
+   
+
+},
+ listaDeVentas(){
+        const vendidos = autos.filter(function(filtro){
+            return filtro.vendido == true
+        })
+        let lista = [];
+        vendidos.map(function(e){
+            lista.push(e.precio)
+        })
+        return lista
+    },
+    
+totalDeVentas(){
+ 
+if (this.listaDeVentas == []){
+   return 0
+   }else{
+      let suma = this.listaDeVentas().reduce(function(acc, item){
+         return acc += item ;
+      }, 0);
+      return suma
+   }
+},
+   
+   puedeComprar(auto,persona){
+      let pagoEnCuotas = (persona.capacidadDePagoEnCuotas)*(auto.cuotas);
+      let pagar = (auto.precio);
+      let puedePagar = (persona.capacidadDePagoTotal);
+
+        return ((pagar < puedePagar)&&(pagar < pagoEnCuotas))    
+        },
+
   
+  
+
+   autosQuePuedeComprar(persona){
+
+      let aVender = concesionaria.autosParaLaVenta().filter(auto=> {
+         return concesionaria.puedeComprar (auto, persona)
+      })
+      return aVender;
+      
+   },
+   
+} */
 
 
 /*console.log(concesionaria.puedeComprar(1,0))
@@ -133,13 +212,13 @@ console.log(concesionaria.puedeComprar(0,2))*/
 console.log(concesionaria.autos0KM())
 console.log(concesionaria.autosParaLaVenta())
 
-//console.log(enVenta)
+console.log(enVenta)
 
-//console.log(concesionaria.venderAuto("JJK116"))
+console.log(concesionaria.venderAuto("JJK116"))
 
-//console.log(concesionaria.autosParaLaVenta())
+console.log(concesionaria.autosParaLaVenta())
 
-//console.log(concesionaria.venderAuto("APL123"))
+console.log(concesionaria.venderAuto("APL123"))
 
 //console.log(concesionaria.autos0KM())
 
